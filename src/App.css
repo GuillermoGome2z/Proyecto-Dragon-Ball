@@ -1,0 +1,117 @@
+/* FONDO GENERAL */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* CONTENEDOR APP */
+.app {
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #f9a602;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* GRID DE PERSONAJES */
+.characters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* TARJETAS DE PERSONAJE */
+.card {
+  background: #f97316;
+  /* naranja Dragon Ball */
+  border-radius: 10px;
+  padding: 1rem;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 165, 0, 0.5);
+}
+
+/* IMAGEN DE PERSONAJE */
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* NOMBRE */
+.card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* DETALLES */
+.card p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #fef3c7;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+/* Efecto aura azul tipo Ultra Instinto */
+.aura-blue::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 10px rgba(0, 255, 255, 0.5);
+  z-index: 0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 20px 10px rgba(0, 255, 255, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 30px 15px rgba(0, 255, 255, 0.8);
+  }
+
+  100% {
+    box-shadow: 0 0 20px 10px rgba(0, 255, 255, 0.5);
+  }
+}
+
+.card {
+  position: relative;
+  /* importante para que el ::before funcione */
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Puedes crear otras variantes para otras fases */
+.aura-blue::before {
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.4) 0%, transparent 70%);
+}
+
+.aura-white::before {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+}
