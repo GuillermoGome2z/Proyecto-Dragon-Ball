@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import kameHouse from './assets/kameHouse.jpg';
+
 
 function App() {
   const [characters, setCharacters] = useState<any[]>([]);
@@ -42,7 +44,19 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Personajes de Dragon Ball</h1>
+
+      {/* ENCABEZADO VISUAL CON IMAGEN */}
+      <div
+        className="banner"
+        style={{ backgroundImage: `url(${kameHouse})` }}
+      >
+        <div className="overlay">
+          <h2 className="banner-title">¡Bienvenido al Universo Dragon Ball!</h2>
+        </div>
+      </div>
+
+
+      <h1 className="fuente">Personajes de Dragon Ball</h1>
 
       {loading ? (
         <p>Cargando personajes...</p>
