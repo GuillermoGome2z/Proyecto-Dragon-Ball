@@ -1,40 +1,44 @@
-// src/App.tsx
 import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
   const [characters, setCharacters] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    fetch('https://dragonball-api.com/api/characters')
+    setLoading(true);
+    fetch(`https://dragonball-api.com/api/characters?page=${page}&limit=12`)
       .then(response => response.json())
       .then(data => {
         const personajesConUniverso = data.items.map((char: any) => {
           let universo = 'Desconocido';
-
-          if (char.name?.includes("Goku") || char.name?.includes("Vegeta")) {
+          if (char.name?.includes("Goku") || char.name?.includes("Vegeta") || char.name?.includes("Freezer")) {
             universo = 'Universo 7';
-          } else if (char.name?.includes("Vegeta")) {
-            universo = 'Universo 7';
-
+          } else if (char.name?.includes("Jiren")) {
+            universo = 'Universo 11';
           }
-
           return { ...char, universe: universo };
-
         });
-        console.log(data.items);
-        console.log("Primer personaje:", data.items?.[0]);
+
         setCharacters(personajesConUniverso);
+        setTotalPages(data.meta.totalPages); // la API lo da
         setLoading(false);
-
-
       })
       .catch(error => {
         console.error('Error al consumir la API:', error);
         setLoading(false);
       });
-  }, []);
+  }, [page]);
+
+  const nextPage = () => {
+    if (page < totalPages) setPage(prev => prev + 1);
+  };
+
+  const prevPage = () => {
+    if (page > 1) setPage(prev => prev - 1);
+  };
 
   return (
     <div className="app">
@@ -43,17 +47,25 @@ function App() {
       {loading ? (
         <p>Cargando personajes...</p>
       ) : (
-        <div className="characters-grid">
-          {characters.map((char) => (
-            <div key={char.id} className="card">
-              <img src={char.image} alt={char.name} width="150" />
-              <h3>{char.name}</h3>
-              <p><strong>Raza:</strong> {char.race}</p>
-              <p><strong>Universo:</strong> {char.universe}</p>
-              <p><strong>Ki:</strong> {char.ki || 'N/A'}</p>
-            </div>
-          ))}
-        </div>
+        <>
+          <div className="characters-grid">
+            {characters.map((char) => (
+              <div key={char.id} className="card">
+                <img src={char.image} alt={char.name} width="150" />
+                <h3>{char.name}</h3>
+                <p><strong>Raza:</strong> {char.race}</p>
+                <p><strong>Universo:</strong> {char.universe}</p>
+                <p><strong>Ki:</strong> {char.ki || 'N/A'}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: '20px' }}>
+            <button onClick={prevPage} disabled={page === 1}>Anterior</button>
+            <span style={{ margin: '0 10px' }}>Página {page} de {totalPages}</span>
+            <button onClick={nextPage} disabled={page === totalPages}>Siguiente</button>
+          </div>
+        </>
       )}
     </div>
   );
