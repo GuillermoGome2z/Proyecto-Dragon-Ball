@@ -51,7 +51,10 @@ function App() {
         style={{ backgroundImage: `url(${kameHouse})` }}
       >
         <div className="overlay">
-          <h2 className="banner-title">¡Bienvenido al Universo Dragon Ball!</h2>
+          <div className="banner-content">
+            <h2 className="banner-title">¡Bienvenido al Universo Dragon Ball!</h2>
+            <h3 className="grupo-title">Grupo No.4</h3>
+          </div>
         </div>
       </div>
 
@@ -64,13 +67,25 @@ function App() {
         <>
           <div className="characters-grid">
             {characters.map((char) => (
-              <div key={char.id} className="card">
-                <img src={char.image} alt={char.name} width="150" />
-                <h3>{char.name}</h3>
-                <p><strong>Raza:</strong> {char.race}</p>
-                <p><strong>Universo:</strong> {char.universe}</p>
-                <p><strong>Ki:</strong> {char.ki || 'N/A'}</p>
+             <div key={char.id} className="flip-box">
+                <div className="flip-inner">
+                  {/* Parte frontal: solo la imagen */}
+                  <div className="flip-front">
+                    <img src={char.image} alt={char.name} />
+                  </div>
+
+                  {/* Parte trasera: fondo negro con cuadro naranja centrado */}
+                  <div className="flip-back">
+                    <div className="info-box">
+                      <h3>{char.name}</h3>
+                      <p><strong>Raza:</strong> {char.race}</p>
+                      <p><strong>Universo:</strong> {char.universe}</p>
+                      <p><strong>Ki:</strong> {char.ki || 'N/A'}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
+
             ))}
           </div>
 
