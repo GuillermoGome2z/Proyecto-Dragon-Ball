@@ -1,4 +1,4 @@
-/* FONDO GENERAL */
+/* ESTILOS GENERALES */
 body {
   margin: 0;
   padding: 0;
@@ -8,91 +8,16 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-/* CONTENEDOR APP */
 .app {
   text-align: center;
   padding: 2rem;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #f9a602;
-  text-shadow: 2px 2px 4px #000;
-}
-
-/* GRID DE PERSONAJES */
-.characters-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-/* TARJETAS DE PERSONAJE */
-.card {
-  background: rgba(255, 255, 255, 0.08); /* Transparencia más notoria */
-  border-radius: 16px;
-  padding: 1rem;
-  width: 200px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* Sombra básica */
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-
-.card:hover {
-  transform: scale(1.08); /* Se agranda más */
-  background: rgba(255, 255, 255, 0.2); /* Se aclara más */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Borde más visible */
-  box-shadow: 
-    0 12px 24px rgba(255, 255, 255, 0.3),   /* Brillo blanco */
-    0 0 20px rgba(255, 255, 255, 0.2),       /* Glow alrededor */
-    0 10px 30px rgba(0, 0, 0, 0.35);         /* Profundidad */
-  transition: all 0.3s ease;
-}
-
-
-
-/* IMAGEN DE PERSONAJE */
-.card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-/* NOMBRE */
-.card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  color: #ffffff;
-}
-
-/* DETALLES */
-.card p {
-  margin: 0.2rem 0;
-  font-size: 0.9rem;
-  color: #eeeeee;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  max-height: 300px;
-}
-
-/* Este es lo que contiene la imagen hameHosue.jpg*/
+/* BANNER */
 .banner {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: none;
-  background-image: url('./assets/kameHouse.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -101,7 +26,7 @@ h1 {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: clamp(1.2rem, 4vw, 2.5rem); /* <- se adapta */
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
   font-weight: bold;
   text-shadow: 2px 2px 4px black;
   font-family: 'Bangers', cursive;
@@ -110,27 +35,15 @@ h1 {
   padding: 1rem;
 }
 
-.grupo-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #facc15; /* dorado estilo Dragon Ball */
-  font-family: 'Bangers', cursive;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;  /* ⬅️ Reduce espacio vertical */
+  padding: 1rem 0;
   width: 100%;
 }
-
 
 .banner-title {
   color: white;
@@ -145,10 +58,84 @@ h1 {
   font-size: 3rem;
   text-align: center;
   padding: 40px 0;
-
-
+  color: #f9a602;
+  text-shadow: 2px 2px 4px #000;
 }
 
+/* FILTROS */
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+.filter-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #f9a602;
+  text-align: left;
+}
+
+.filter-group select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #f9a602;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.filter-group select:hover {
+  border-color: #ffdb58;
+}
+
+.filter-group select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #f9a602;
+}
+
+.reset-filters {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #f97316, #facc15);
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: transform 0.2s;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+}
+
+.reset-filters:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(249, 166, 2, 0.5);
+}
+
+/* TARJETAS DE PERSONAJES */
+.characters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
 
 .card-container {
   width: 220px;
@@ -180,7 +167,6 @@ h1 {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Frente con glass */
 .card-front {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
@@ -194,9 +180,13 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* Reverso con más información y glass */
+.card-container:hover .card-front img {
+  transform: scale(1.05);
+}
+
 .card-back {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(16px);
@@ -210,79 +200,98 @@ h1 {
   text-align: center;
 }
 
-.flip-box {
-  width: 220px;
-  height: 320px;
-  perspective: 1000px;
-  margin: 1rem;
-}
-
-.flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s ease;
-  transform-style: preserve-3d;
-}
-
-.flip-box:hover .flip-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-front, .flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  backface-visibility: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-/* Frente: imagen */
-.flip-front {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flip-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Reverso: fondo negro */
-.flip-back {
-  background: rgba(0, 0, 0, 0.1); /* Fondo muy sutil */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* Cuadro naranja centrado dentro del fondo negro */
 .info-box {
-  background: linear-gradient(135deg, #f97316, #facc15); /* naranja-dorado */
+  background: linear-gradient(135deg, #f97316, #facc15);
   border-radius: 12px;
   padding: 1rem;
   width: 80%;
   text-align: center;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* sombra para destacarlo */
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
 }
 
 .info-box h3 {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
+  color: #000;
+  font-weight: bold;
 }
 
 .info-box p {
   margin: 0.3rem 0;
   font-size: 0.9rem;
+  color: #000;
+}
+
+/* PAGINACIÓN */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.pagination button {
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(135deg, #f97316, #facc15);
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+}
+
+.pagination button:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(249, 166, 2, 0.5);
+}
+
+.pagination span {
+  color: #f9a602;
+  font-weight: bold;
+  font-size: 1.1rem;
+  min-width: 120px;
+}
+
+/* ESTILOS RESPONSIVOS */
+@media (max-width: 768px) {
+  .filters-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filter-group {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .reset-filters {
+    align-self: center;
+    margin-top: 1rem;
+  }
+  
+  .card-container {
+    width: 180px;
+    height: 260px;
+  }
+  
+  .banner-title {
+    font-size: 1.5rem;
+  }
+  
+  .fuente {
+    font-size: 2rem;
+  }
 }
